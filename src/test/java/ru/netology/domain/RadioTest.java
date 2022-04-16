@@ -47,11 +47,20 @@ class RadioTest {
     }
 
     @Test
-        // желаемая радио станция
-    void radioStationNumberOptional() {
+        // номер радиостанции от нуля до максимума
+    void radioStationNumberFromZeroToMax() {
         Radio radioman = new Radio();
         radioman.setDesiredRadioStation(7);
         int expected = 7;
+        assertEquals(expected, radioman.getCurrentPosition());
+    }
+
+    @Test
+        // номер радиостанции более max
+    void radioStationOverMax() {
+        Radio radioman = new Radio();
+        radioman.setDesiredRadioStation(10);
+        int expected = 9;
         assertEquals(expected, radioman.getCurrentPosition());
     }
 
