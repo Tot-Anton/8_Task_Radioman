@@ -56,11 +56,20 @@ class RadioTest {
     }
 
     @Test
-        // номер радиостанции более max
-    void radioStationOverMax() {
+        // номер радиостанции не может быть более max
+    void radioStationCannotBeMoreThanMax() {
         Radio radioman = new Radio();
         radioman.setDesiredRadioStation(10);
         int expected = 9;
+        assertEquals(expected, radioman.getCurrentPosition());
+    }
+
+    @Test
+        // номер радиостанции не может быть < 0
+    void radioStationCannotBeLessThanZero() {
+        Radio radioman = new Radio();
+        radioman.setDesiredRadioStation(-1);
+        int expected = 0;
         assertEquals(expected, radioman.getCurrentPosition());
     }
 
