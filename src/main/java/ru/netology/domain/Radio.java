@@ -1,8 +1,8 @@
 package ru.netology.domain;
 
 public class Radio {
-    int currentPosition;
-    int currentVolume;
+    private int currentPosition;
+    private int currentVolume;
     private int maxPosition = 9;
     private int maxVolume = 10;
 
