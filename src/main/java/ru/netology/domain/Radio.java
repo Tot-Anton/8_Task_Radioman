@@ -4,13 +4,16 @@ public class Radio {
     private int currentPosition;
     private int currentVolume;
     private int minPosition;
-    private int maxPosition = 9;
+    private int maxPosition = 10;
     private int minVolume = 0;
     private int maxVolume = 100;
 
-
     public Radio(int maxPosition) {
         this.maxPosition = maxPosition;
+    }
+
+    public Radio() {
+
     }
 
 
@@ -87,6 +90,16 @@ public class Radio {
             return;
         }
         this.currentPosition = desiredRadioStation;
+    }
+
+    public void setCurrentRadioStationNumber() {
+        //Номер текущей радиостанции изменяется в пределах от 0 до количества радиостанций
+        // не включительно (т.е. если станций 10, то номер последней - 9).
+        if (currentPosition > minPosition) {
+            currentPosition = currentPosition - 1;
+        } else {
+            currentPosition = maxPosition - 1;
+        }
     }
 
 
