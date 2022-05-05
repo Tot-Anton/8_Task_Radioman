@@ -7,12 +7,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
+        //Номер текущей радиостанции изменяется в пределах от 0 до количества радиостанций
+        // не включительно (т.е. если станций 10, то номер последней - 9).
+    void getNumberPosition() {
+        Radio radioman = new Radio();
+        radioman.setCurrentPosition(9);
+        radioman.setCurrentRadioStationNumber();
+        int expected = 8;
+        assertEquals(expected, radioman.getCurrentPosition());
+    }
+
+    @Test
         //радиостанции > max
     void radioOverMax() {
         Radio radioman = new Radio();
-        radioman.setCurrentPosition(9);
+        radioman.setCurrentPosition(10);
         radioman.nextRadioPosition();
-        int expected = 0;
+        int expected = 1;
         assertEquals(expected, radioman.getCurrentPosition());
     }
 
@@ -37,12 +48,12 @@ class RadioTest {
     }
 
     @Test
-        //радиостанция < 9
+        //радиостанция < max
     void getCurrentVolume() {
         Radio radioman = new Radio();
-        radioman.setCurrentPosition(9);
+        radioman.setCurrentPosition(8);
         radioman.prevRadioPosition();
-        int expected = 8;
+        int expected = 7;
         assertEquals(expected, radioman.getCurrentPosition());
     }
 
@@ -59,7 +70,7 @@ class RadioTest {
         // номер радиостанции не может быть более max
     void radioStationCannotBeMoreThanMax() {
         Radio radioman = new Radio();
-        radioman.setDesiredRadioStation(10);
+        radioman.setDesiredRadioStation(11);
         int expected = 9;
         assertEquals(expected, radioman.getCurrentPosition());
     }
@@ -77,9 +88,9 @@ class RadioTest {
         //громкость не должна стать > max и переключится на 0
     void volumeOverMax() {
         Radio radioman = new Radio();
-        radioman.setCurrentVolume(10);
+        radioman.setCurrentVolume(100);
         radioman.increasingVolume();
-        int expected = 10;
+        int expected = 100;
         assertEquals(expected, radioman.getCurrentVolume());
     }
 
