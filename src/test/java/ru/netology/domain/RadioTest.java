@@ -23,7 +23,7 @@ class RadioTest {
         Radio radioman = new Radio();
         radioman.setCurrentPosition(10);
         radioman.nextRadioPosition();
-        int expected = 0;
+        int expected = 1;
         assertEquals(expected, radioman.getCurrentPosition());
     }
 
@@ -33,7 +33,7 @@ class RadioTest {
         Radio radioman = new Radio();
         radioman.setCurrentPosition(0);
         radioman.prevRadioPosition();
-        int expected = 10;
+        int expected = 9;
         assertEquals(expected, radioman.getCurrentPosition());
     }
 
