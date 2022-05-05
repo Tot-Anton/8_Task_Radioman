@@ -11,12 +11,12 @@ public class Radio {
     private int currentPosition;
     private int currentVolume;
     private int minStations;
-    private int numberOfStations = 10;
+    private int numberStations = 10;
     private int minVolume = 0;
     private int maxVolume = 100;
 
-    public Radio(int numberOfStations) {
-        this.numberOfStations = numberOfStations;
+    public Radio(int numberStations) {
+        this.numberStations = numberStations;
 
     }
 
@@ -25,14 +25,14 @@ public class Radio {
         if (currentPosition < minStations) {
             return;
         }
-        if (currentPosition > numberOfStations) {
+        if (currentPosition > numberStations - 1) {
             return;
         }
         this.currentPosition = currentPosition;
     }
 
     public void nextRadioPosition() { // выбор радиостанций вперед
-        if (currentPosition < numberOfStations) {
+        if (currentPosition < numberStations - 1) {
             currentPosition++;
         } else {
             currentPosition = minStations;
@@ -44,13 +44,13 @@ public class Radio {
         if (currentPosition > minStations) {
             currentPosition--;
         } else {
-            currentPosition = numberOfStations;
+            currentPosition = numberStations - 1;
         }
     }
 
     public void setDesiredRadioStation(int desiredRadioStation) {  //желаемая радио-станция
-        if (desiredRadioStation > numberOfStations) {
-            currentPosition = numberOfStations;
+        if (desiredRadioStation > numberStations) {
+            currentPosition = numberStations - 1;
             return;
         }
         if (desiredRadioStation < minStations) {
@@ -66,7 +66,7 @@ public class Radio {
         if (currentPosition > minStations) {
             currentPosition = currentPosition - 1;
         } else {
-            currentPosition = numberOfStations - 1;
+            currentPosition = numberStations - 1;
         }
     }
 

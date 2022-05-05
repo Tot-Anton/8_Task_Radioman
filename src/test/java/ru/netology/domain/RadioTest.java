@@ -33,7 +33,7 @@ class RadioTest {
         Radio radioman = new Radio();
         radioman.setCurrentPosition(0);
         radioman.prevRadioPosition();
-        int expected = 10;
+        int expected = 9;
         assertEquals(expected, radioman.getCurrentPosition());
     }
 
@@ -53,7 +53,7 @@ class RadioTest {
         Radio radioman = new Radio();
         radioman.setCurrentPosition(8);
         radioman.prevRadioPosition();
-        int expected = 8;
+        int expected = 7;
         assertEquals(expected, radioman.getCurrentPosition());
     }
 
@@ -71,7 +71,7 @@ class RadioTest {
     void radioStationCannotBeMoreThanMax() {
         Radio radioman = new Radio();
         radioman.setDesiredRadioStation(11);
-        int expected = 10;
+        int expected = 9;
         assertEquals(expected, radioman.getCurrentPosition());
     }
 
